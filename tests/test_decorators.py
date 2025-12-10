@@ -1,6 +1,7 @@
 from datetime import datetime
-from src.decorators import log
 from typing import Any
+
+from src.decorators import log
 
 
 def test_log(capsys: Any) -> None:
