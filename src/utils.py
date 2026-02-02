@@ -13,12 +13,10 @@ def get_transactions(json_file: str) -> Any:
 
     try:
         try:
-            with open(json_file, 'r') as f:
+            with open(json_file, encoding="utf-8") as f:
                 data = json.load(f)
-        except UnicodeDecodeError:
-            with open(json_file, 'r', encoding='cp1252') as f:
-                data = json.load(f)
-
+        except UnicodeDecodeError as e:
+            print(e)
 
         return data
     except json.JSONDecodeError:
