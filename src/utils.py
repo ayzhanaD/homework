@@ -1,7 +1,7 @@
 import json
 from typing import Any
 
-from src.external_api import convert_currency
+from external_api import convert_currency
 
 
 def get_transactions(json_file: str) -> Any:
@@ -12,8 +12,13 @@ def get_transactions(json_file: str) -> Any:
         return []
 
     try:
-        with open(json_file) as f:
-            data = json.load(f)
+        try:
+            with open(json_file, 'r') as f:
+                data = json.load(f)
+        except UnicodeDecodeError:
+            with open(json_file, 'r', encoding='cp1252') as f:
+                data = json.load(f)
+
 
         return data
     except json.JSONDecodeError:
