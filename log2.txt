@@ -1,0 +1,1 @@
+test_func_4 error: TypeError. Inputs: ('Olof',), {}
