@@ -2,7 +2,7 @@ import json
 import logging
 from typing import Any
 
-from external_api import convert_currency
+from src.external_api import convert_currency
 
 logger = logging.getLogger("utils")
 file_handler = logging.FileHandler("logs/masks.log")

@@ -1,1 +1,1 @@
-test_func_3 result: Olof, start time: 16:39:50, arguments: ('Olof',), {}
+test_func_3 result: Olof, start time: 21:49:48, arguments: ('Olof',), {}
