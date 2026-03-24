@@ -18,8 +18,8 @@ def convert_currency(amount: float, currency_code: str) -> float | str:
         }
 
         response = requests.get(url, headers)
-
         result = response.json()
+
         return float(result["result"])
     except requests.exceptions.RequestException:
         return "error occurred"

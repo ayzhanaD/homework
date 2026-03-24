@@ -3,10 +3,15 @@ from typing import Any, Generator
 
 def filter_by_currency(transactions: list[dict], currency_code: str) -> Generator[str | dict, Any, None]:
     """  функция принимает список транзакций и возвращает транзакции, соответствующие заданной валюте """
-    filtered_transactions: list[dict] = (
-        list(filter(lambda transaction: transaction["operationAmount"]["currency"]["code"] == currency_code,
-                    transactions))
-    )
+    try:
+        filtered_transactions: list[dict] = (
+            list(filter(lambda transaction: transaction["operationAmount"]["currency"]["code"] == currency_code,
+                        transactions))
+        )
+    except KeyError:
+        filtered_transactions: list[dict] = (
+            list(filter(lambda transaction: transaction["currency_code"] == currency_code, transactions))
+        )
 
     if len(filtered_transactions) < 1:
         yield "транзакции отсутствуют"

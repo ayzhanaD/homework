@@ -4,7 +4,7 @@ from src.masks import get_mask_account, get_mask_card_number
 def mask_account_card(card_type_and_number: str) -> str:
     """ функция принимает строку, содержащую тип и номер карты или счета,
      и возвращает строку с замаскированным номером """
-    card_type_and_number_list = card_type_and_number.split(" ")
+    card_type_and_number_list = str(card_type_and_number).split(" ")
     card_type = ""
 
     for card_symbol_index in range(len(card_type_and_number_list) - 1):
