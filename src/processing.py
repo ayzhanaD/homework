@@ -3,8 +3,9 @@ def filter_by_state(processes: list[dict], state: str = "EXECUTED") -> list:
     и возвращает новый список словарей с соответствующим значением ключа """
     filtered_processes = []
     for process in processes:
-        if process["state"] == state:
+        if str(process["state"]).lower() == str(state).lower():
             filtered_processes.append(process)
+
     return filtered_processes
 
 

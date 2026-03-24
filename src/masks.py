@@ -9,7 +9,7 @@ logger.addHandler(file_handler)
 logger.setLevel(logging.DEBUG)
 
 
-def get_mask_card_number(card_number: Union[int, str]) -> str | None:
+def get_mask_card_number(card_number: Union[int, str]) -> str | None | Exception:
     """ функция принимает номер карты и возвращает ее маску"""
     try:
         logger.info(f"Принимаем номер карты: {card_number}")
@@ -18,9 +18,10 @@ def get_mask_card_number(card_number: Union[int, str]) -> str | None:
         return card_mask
     except Exception as e:
         logger.error(f"Произошла ошибка: {e}")
+        return e
 
 
-def get_mask_account(account_number: Union[int, str]) -> str | None:
+def get_mask_account(account_number: Union[int, str]) -> str | None | Exception:
     """ функция принимает номер счета и возвращает его маску"""
     try:
         logger.info(f"Принимаем номер счета: {account_number}")
@@ -29,3 +30,4 @@ def get_mask_account(account_number: Union[int, str]) -> str | None:
         return account_mask
     except Exception as e:
         logger.error(f"Произошла ошибка: {e}")
+        return e

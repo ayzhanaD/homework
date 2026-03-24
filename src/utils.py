@@ -50,5 +50,17 @@ def get_transaction_amount(transaction: dict) -> Any:
         else:
             logger.info("Возвращаем сумму транзакции в рублях")
             return float(transaction_amount)
+    except KeyError:
+        transaction_currency_code = transaction["currency_code"]
+        transaction_amount = transaction["amount"]
+        logger.info(f"Извлекаем валюту транзакции: {transaction_currency_code}")
+        logger.info(f"Извлекаем сумму транзакции: {transaction_amount}")
+
+        if transaction_currency_code == "USD" or transaction_amount == "EUR":
+            logger.info("Проверяем необходимость конвертации валюты в рубли")
+            return convert_currency(transaction_amount, transaction_currency_code)
+        else:
+            logger.info("Возвращаем сумму транзакции в рублях")
+            return float(transaction_amount)
     except Exception as e:
         logger.error(f"Произошла ошибка: {e}")
